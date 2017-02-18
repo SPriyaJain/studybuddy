@@ -27,7 +27,6 @@ from kik import KikApi, Configuration
 from kik.messages import messages_from_json, TextMessage, PictureMessage, \
     SuggestedResponseKeyboard, TextResponse, StartChattingMessage
 
-
 class KikBot(Flask):
     """ Flask kik bot application class"""
 
@@ -161,10 +160,10 @@ class KikBot(Flask):
 
 if __name__ == "__main__":
     """ Main program """
-    kik = KikApi('BOT_USERNAME_HERE', 'BOT_API_KEY_HERE')
+    kik = KikApi('prodfriend', '958137de-1eac-4b5c-a440-5bc5c36d769a')
     # For simplicity, we're going to set_configuration on startup. However, this really only needs to happen once
     # or if the configuration changes. In a production setting, you would only issue this call if you need to change
     # the configuration, and not every time the bot starts.
-    kik.set_configuration(Configuration(webhook='WEBHOOK_HERE'))
+    kik.set_configuration(Configuration(webhook='http://bdc639a1.ngrok.io/incoming'))
     app = KikBot(kik, __name__)
     app.run(port=8080, host='127.0.0.1', debug=True)
